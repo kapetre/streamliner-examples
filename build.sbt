@@ -21,6 +21,7 @@ lazy val avro = (project in file("avro")).
     }
   )
 
+
 lazy val thrift = (project in file("thrift")).
   settings(commonSettings: _*).
   settings(
@@ -48,7 +49,7 @@ lazy val kafka = (project in file("kafka")).
         "org.apache.spark" %% "spark-core" % "1.5.2" % "provided",
         "org.apache.spark" %% "spark-streaming" % "1.5.2" % "provided",
         "org.apache.spark" %% "spark-sql" % "1.5.2"  % "provided",
-        "org.apache.spark" %% "spark-streaming-kafka" % "1.5.2" exclude("org.spark-project.spark", "unused"),
+        "org.apache.spark" %% "spark-streaming-kafka-v09" % "1.5.2-mapr-1603" exclude("org.spark-project.spark", "unused"),
         "org.scalatest" %% "scalatest" % "2.2.5" % "test",
         "com.memsql" %% "memsql-etl" % "1.3.2"
       )
@@ -69,4 +70,9 @@ lazy val root = (project in file(".")).
         "org.scalatest" %% "scalatest" % "2.2.5" % "test",
         "com.memsql" %% "memsql-etl" % "1.3.2"
     )
+)
+
+resolvers ++= Seq(
+  "mapr-shitty-repo" at "http://repository.mapr.com/nexus/content/groups/mapr-public",
+  "Maven Central Server" at "http://repo1.maven.org/maven2"
 )
